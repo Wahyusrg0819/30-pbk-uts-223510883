@@ -15,11 +15,12 @@ const todos_asc = computed(() => todos.value.sort((a, b) => {
 
 const filteredTodos = computed(() => {
   if (filterCompleted.value) {
-    return todos_asc.value.filter(todo => todo.done)
+    return todos_asc.value.filter(todo => !todo.done)
   } else {
     return todos_asc.value
   }
 })
+
 
 const addTodo = () => {
   if (input_content.value.trim() === '') {
@@ -48,7 +49,7 @@ watch(name, (newVal) => {
 })
 
 watch(filterCompleted, (newVal) => {
-  localStorage.setItem('filterCompleted', newVal)
+  localStorage.setItem('filterCompleted', newVal.toString()) // Mengubah ke string karena localStorage hanya dapat menyimpan string
 })
 
 onMounted(() => {
@@ -57,6 +58,7 @@ onMounted(() => {
   filterCompleted.value = JSON.parse(localStorage.getItem('filterCompleted')) || false
 })
 </script>
+
 
 
 
@@ -83,7 +85,7 @@ onMounted(() => {
       <h3>Daftar Kegiatan</h3>
 
       <div class="filter">
-        <button @click="filterCompleted = !filterCompleted">{{ filterCompleted ? 'Tampilkan Semua' : 'Tampilkan sudah selesai' }}</button>
+        <button @click="filterCompleted = !filterCompleted">{{ filterCompleted ? 'Tampilkan Semua' : 'Tampilkan Belum selesai' }}</button>
       </div>
 
       <div class="list">
