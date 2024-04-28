@@ -53,7 +53,7 @@ watch(name, (newVal) => {
 })
 
 watch(filterCompleted, (newVal) => {
-  localStorage.setItem('filterCompleted', newVal.toString()) // Mengubah ke string karena localStorage hanya dapat menyimpan string
+  localStorage.setItem('filterCompleted', newVal.toString()) 
 })
 
 onMounted(() => {
