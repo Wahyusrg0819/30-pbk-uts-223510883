@@ -37,8 +37,12 @@ const addTodo = () => {
 }
 
 const removeTodo = todo => {
-  todos.value = todos.value.filter(t => t !== todo)
+  const index = todos.value.findIndex(t => t === todo)
+  if (index !== -1) {
+    todos.value.splice(index, 1)
+  }
 }
+
 
 watch(todos, newVal => {
   localStorage.setItem('todos', JSON.stringify(newVal))
