@@ -2,8 +2,6 @@
   --primary: #7900FF;
   --business: #32c091;
   --personal: var(--primary);
-  /* --light: #EEE; */
-  /* --light: linear-gradient(180.3deg, rgba(214, 224, 255, 1) 37.2%, rgba(254, 168, 168, 1) 137.3%); */
   --light: #E5D1FA;
   /* --light: linear-gradient(174.2deg, rgba(255, 244, 228, 1) 7.1%, rgba(240, 246, 238, 1) 67.4%); */
   --grey: #888;
@@ -35,7 +33,7 @@ button {
 body {
   background: var(--light);
   color: var(--dark);
-  background-image: linear-gradient(to right, #F7F6BB, #FCDC2A);
+  background-image: linear-gradient(to right, #F5DD61, #F57D1F);
 }
 
 .app {
@@ -50,12 +48,7 @@ section {
   padding-right: 1.5rem;
 }
 
-h3 {
-  color: var(--dark);
-  font-size: 1rem;
-  font-weight: 400;
-  margin-bottom: 0.5rem;
-}
+
 
 h4 {
   color: var(--grey);
@@ -130,12 +123,17 @@ input[type="checkbox"] {
   height: 20px;
   border-radius: 50%;
   border: 2px solid var(--business);
-  box-shadow: var(--business-glow);
+  box-shadow: 0 0 10px var(--business);
+  transition: transform 0.3s ease-in-out;
+}
+
+.bubble:hover {
+  transform: scale(1.2);
 }
 
 .bubble.personal {
   border-color: var(--personal);
-  box-shadow: var(--personal-glow);
+  box-shadow: 0 0 10px var(--personal);
 }
 
 .bubble::after {
@@ -145,14 +143,14 @@ input[type="checkbox"] {
   width: 0px;
   height: 0px;
   background-color: var(--business);
-  box-shadow: var(--business-glow);
+  box-shadow: 0 0 10px var(--business);
   border-radius: 50%;
   transition: 0.2s ease-in-out;
 }
 
 .bubble.personal::after {
   background-color: var(--personal);
-  box-shadow: var(--personal-glow);
+  box-shadow: 0 0 10px var(--personal);
 }
 
 input:checked~.bubble::after {
@@ -160,6 +158,7 @@ input:checked~.bubble::after {
   height: 10px;
   opacity: 1;
 }
+
 
 .create-todo .options label div {
   color: var(--dark);
@@ -273,7 +272,6 @@ input:checked~.bubble::after {
 }
 
 /* style.css */
-/* style.css */
 
 .filter-todos {
   margin-top: 20px;
@@ -304,19 +302,19 @@ input:checked~.bubble::after {
 .todo-item.done {
   opacity: 0.5;
 }
+
+h3 {
+  font-family: "Arial", sans-serif;
+  font-size: 18px; /* Ukuran font */
+  font-weight: bold; /* Ketebalan font */
+  margin-bottom: 0.5rem;
+ 
+}
+
   
-
-
 @media screen and (max-width: 768px) {
   .app {
     width: 85%;
-    margin: auto;
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .app {
-    width: 95%;
     margin: auto;
   }
 }
