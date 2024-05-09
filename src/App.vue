@@ -2,11 +2,7 @@
 
 <header>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-<<<<<<< HEAD
                 <a class="navbar-brand" href="#">TodoList-Wahyu_Siregar</a>
-=======
-                <a class="navbar-brand" href="#">TodoList-Wahyu Siregar</a>
->>>>>>> 1bc3d10d3bab848256dee5020608545fc2abb135
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
