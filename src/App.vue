@@ -17,7 +17,7 @@
                     </ul>
                 </div>
             </nav>
-        </header>
+  </header>
 
 
   <main class="app">
