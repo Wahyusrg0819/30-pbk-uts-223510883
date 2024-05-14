@@ -124,9 +124,6 @@ const filteredPosts = computed(() => {
   return posts.value.filter(post => post.userId === selectedUser.value)
 })
 
-const handleUserChange = () => {
-  loading.value = true; // Menandai loading saat pemilihan user
-}
 
 onMounted(async () => {
   // Fetch users and posts data from the API
