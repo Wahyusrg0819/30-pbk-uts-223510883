@@ -21,10 +21,7 @@
 
 
   <main class="app">
-    <!-- Header -->
     
-
-    <!-- Section for Todos or Posts -->
     <section v-if="selectedMenu === 'Todos'" class="todos-section">
       <section class="greeting">
         <h2 class="title">
@@ -70,7 +67,6 @@
 
     <section v-else-if="selectedMenu === 'Post'" class="post-section">
 
-       <!-- Loader -->
   <div v-if="loading" class="loader">
     <div class="dot"></div>
     <div class="dot"></div>
@@ -98,7 +94,7 @@ const selectedMenu = ref('Todos')
 const selectedUser = ref(null)
 const users = ref([])
 const posts = ref([])
-const loading = ref(false) // Menandai saat loading sedang berlangsung
+const loading = ref(false) 
 const name = ref('')
 const input_content = ref('')
 const filterCompleted = ref(false)
@@ -126,12 +122,12 @@ const filteredPosts = computed(() => {
 
 
 onMounted(async () => {
-  // Fetch users and posts data from the API
+ 
   const usersResponse = await fetch('https://jsonplaceholder.typicode.com/users')
   const postsResponse = await fetch('https://jsonplaceholder.typicode.com/posts')
   users.value = await usersResponse.json()
   posts.value = await postsResponse.json()
-  loading.value = false; // Menandai loading selesai setelah data terambil
+  loading.value = false; 
 })
 </script>
 
@@ -143,7 +139,7 @@ onMounted(async () => {
 }
 
 .filter button {
-  background-color: #7900ff; /* Green */
+  background-color: #7900ff; 
   border: none;
   color: white;
   padding: 10px 20px;
@@ -160,7 +156,6 @@ onMounted(async () => {
   background-color: #45a049;
 }
 
-/* CSS for the buttons in the header */
 
 header {
   background-color: var(--primary);
@@ -172,19 +167,18 @@ nav ul {
   margin: 0;
   padding: 0;
   display: flex;
-  align-items: center; /* Center vertically */
+  align-items: center;
 }
 
 nav ul li {
   margin-right: 1rem;
 }
 
-/* CSS for the loader animation */
 .loader {
   width: 200px;
   height: 200px;
   perspective: 200px;
-  margin: 0 auto; /* Centering the loader */
+  margin: 0 auto; 
 }
 
 .dot {
