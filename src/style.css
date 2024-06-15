@@ -1,18 +1,4 @@
-:root {
-  --primary: #7900FF;
-  --business: #32c091;
-  --personal: var(--primary);
-  --light: #E5D1FA;
-  /* --light: linear-gradient(174.2deg, rgba(255, 244, 228, 1) 7.1%, rgba(240, 246, 238, 1) 67.4%); */
-  --grey: #888;
-  --dark: #313154;
-  --danger: #FF5B57;
 
-  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-
-  --business-glow: 0px 0px 4px rgba(136, 241, 124, 0.75);
-  --personal-glow: 0px 0px 4px rgba(103, 61, 243, 0.75);
-}
 
 * {
   margin: 0;
@@ -50,6 +36,7 @@ button {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   border: 2px solid var(--primary);
+  
   background-color: white;
   color: var(--dark);
 }
@@ -87,13 +74,60 @@ button {
 
 
 body {
-  
-  background-image: linear-gradient(to right, #F27BBD, #E59BE9  );
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+        circle farthest-side at 0% 50%,
+        #282828 23.5%,
+        rgba(255, 170, 0, 0) 0
+      )
+      21px 30px,
+    radial-gradient(
+        circle farthest-side at 0% 50%,
+        #2c3539 24%,
+        rgba(240, 166, 17, 0) 0
+      )
+      19px 30px,
+    linear-gradient(
+        #282828 14%,
+        rgba(240, 166, 17, 0) 0,
+        rgba(240, 166, 17, 0) 85%,
+        #282828 0
+      )
+      0 0,
+    linear-gradient(
+        150deg,
+        #282828 24%,
+        #2c3539 0,
+        #2c3539 26%,
+        rgba(240, 166, 17, 0) 0,
+        rgba(240, 166, 17, 0) 74%,
+        #2c3539 0,
+        #2c3539 76%,
+        #282828 0
+      )
+      0 0,
+    linear-gradient(
+        30deg,
+        #282828 24%,
+        #2c3539 0,
+        #2c3539 26%,
+        rgba(240, 166, 17, 0) 0,
+        rgba(240, 166, 17, 0) 74%,
+        #2c3539 0,
+        #2c3539 76%,
+        #282828 0
+      )
+      0 0,
+    linear-gradient(90deg, #2c3539 2%, #282828 0, #282828 98%, #2c3539 0%) 0 0
+      #282828;
+  background-size: 40px 60px;
 }
 
 .app {
-  width: 70%;
   margin: auto;
+  width: 70%;
+  margin-top: 30px;
 }
 
 section {
@@ -103,13 +137,12 @@ section {
   padding-right: 1.5rem;
 }
 
-
-
 h4 {
   color: var(--grey);
   font-size: 0.875rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .greeting .title {
@@ -144,6 +177,7 @@ h4 {
   border-radius: 0.5rem;
   box-shadow: var(--shadow);
   margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .create-todo .options {
