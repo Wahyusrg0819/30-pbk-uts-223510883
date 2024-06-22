@@ -1,6 +1,9 @@
 <template>
   <div class="Header">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav 
+    class="navbar navbar-expand-lg navbar-light bg-light"
+    background-color="#6e6f70"
+    >
       <router-link class="navbar-brand" to="/">TodoList-Wahyu Siregar</router-link>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -32,8 +35,14 @@ const selectedMenu = ref('Todos');
 .Header {
   padding: 10px;
   margin-bottom: 10px;
-  background-color: #f8f9fa;
+  background-color: #6e6f70;
+  transition: box-shadow 0.3s ease; /* Untuk animasi halus */
 }
+
+.Header:hover {
+  box-shadow: 0 0 20px rgba(7, 113, 234, 1.5); /* Efek cahaya terang */
+}
+
 
 .nav-link {
   color: #f8f9fa;

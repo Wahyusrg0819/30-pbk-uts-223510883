@@ -1,7 +1,9 @@
 <template>
   <q-page class="q-pa-md">
-   <div class="fit column reverse content-stretch">
-      <q-item-label header>Albums</q-item-label>
+    <q-item-label header class="judul" >Albums</q-item-label>
+  
+    <div class="fit column reverse content-stretch">
+      
       <q-card
         v-for="album in albums"
         :key="album.id"
@@ -39,6 +41,15 @@ onMounted(() => {
 </script>
 
 <style scoped>
+
+.judul {
+  font-family: roboto ;
+  font-size: 30px ;
+  color: aliceblue;
+  text-align: center;
+  font-weight: 400;
+}
+
 .album-card {
   margin-bottom: 16px;
   cursor: pointer;
