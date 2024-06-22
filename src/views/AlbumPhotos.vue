@@ -1,39 +1,52 @@
 <template>
   <q-page class="q-pa-md">
-    <q-list>
-      <q-item-label header>Photos in Album</q-item-label>
+    <q-item-label header>Photos in Album</q-item-label>
+    <div class="fit row inline justify-around items-end content-start">
       <q-card
         v-for="photo in photos"
         :key="photo.id"
         class="photo-card"
         clickable
-        @click="openPhoto(photo.url)"
+        @click="openPhoto(photo)"
       >
-        <q-card-section class="photo-card-content">
-          <q-item-label>{{ photo.title }}</q-item-label>
-          <q-img :src="photo.thumbnailUrl" :alt="photo.title" />
-        </q-card-section>
+        <q-img :src="photo.thumbnailUrl"  class="gambar">
+          <div class="absolute-bottom text-subtitle1 text-center">
+            {{ photo.title }}
+          </div>
+        </q-img>
       </q-card>
-    </q-list>
+    </div>
+    <vue-easy-lightbox
+      :visible="lightboxVisible"
+      :imgs="photoUrls"
+      :index="currentPhotoIndex"
+      @hide="lightboxVisible = false"
+    />
   </q-page>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
+import VueEasyLightbox from 'vue-easy-lightbox';
 
 const route = useRoute();
 const albumId = route.params.albumId;
 
 const photos = ref([]);
+const lightboxVisible = ref(false);
+const currentPhotoIndex = ref(0);
+const photoUrls = ref([]);
 
 const fetchPhotos = async () => {
   const response = await fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`);
   photos.value = await response.json();
+  photoUrls.value = photos.value.map(photo => photo.url);
 };
 
-const openPhoto = (photoUrl) => {
-  window.open(photoUrl, '_blank');
+const openPhoto = (photo) => {
+  currentPhotoIndex.value = photos.value.indexOf(photo);
+  lightboxVisible.value = true;
 };
 
 onMounted(() => {
@@ -42,13 +55,19 @@ onMounted(() => {
 </script>
 
 <style scoped>
+
 .photo-card {
-  margin-bottom: 16px;
+  margin: 16px;
+  margin-bottom: 5%;
+  width: 300px;
+  height: 300px;
   cursor: pointer;
   transition: transform 0.2s;
 }
 
-.photo-card-content {
-  justify-content: center; /* Justify isi kartu */
+.photo-card:hover {
+  transform: scale(1.05);
 }
+
 </style>
+

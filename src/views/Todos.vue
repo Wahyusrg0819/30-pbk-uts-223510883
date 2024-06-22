@@ -68,8 +68,6 @@ const removeTodo = index => {
 </script>
 
   
-
-
   <style scoped>
   .title {
     font-size: 30px;

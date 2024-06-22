@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-pa-md">
-    <q-list>
+   <div class="fit column reverse content-stretch">
       <q-item-label header>Albums</q-item-label>
       <q-card
         v-for="album in albums"
@@ -13,7 +13,7 @@
           <q-item-label>{{ album.title }}</q-item-label>
         </q-card-section>
       </q-card>
-    </q-list>
+    </div>
   </q-page>
 </template>
 
