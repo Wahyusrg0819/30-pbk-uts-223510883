@@ -9,44 +9,32 @@
         clickable
         @click="openPhoto(photo)"
       >
-        <q-img :src="photo.thumbnailUrl"  class="gambar">
+        <q-img :src="photo.thumbnailUrl" class="gambar">
           <div class="absolute-bottom text-subtitle1 text-center">
             {{ photo.title }}
           </div>
         </q-img>
       </q-card>
     </div>
-    <vue-easy-lightbox
-      :visible="lightboxVisible"
-      :imgs="photoUrls"
-      :index="currentPhotoIndex"
-      @hide="lightboxVisible = false"
-    />
   </q-page>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import VueEasyLightbox from 'vue-easy-lightbox';
 
 const route = useRoute();
 const albumId = route.params.albumId;
 
 const photos = ref([]);
-const lightboxVisible = ref(false);
-const currentPhotoIndex = ref(0);
-const photoUrls = ref([]);
 
 const fetchPhotos = async () => {
   const response = await fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`);
   photos.value = await response.json();
-  photoUrls.value = photos.value.map(photo => photo.url);
 };
 
 const openPhoto = (photo) => {
-  currentPhotoIndex.value = photos.value.indexOf(photo);
-  lightboxVisible.value = true;
+  window.open(photo.url, '_blank');
 };
 
 onMounted(() => {
@@ -57,9 +45,9 @@ onMounted(() => {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-.judul{
-  font-family: roboto ;
-  font-size: 30px ;
+.judul {
+  font-family: roboto;
+  font-size: 30px;
   color: aliceblue;
   text-align: center;
   font-weight: 400;
@@ -77,6 +65,4 @@ onMounted(() => {
 .photo-card:hover {
   transform: scale(1.05);
 }
-
 </style>
-
