@@ -1,18 +1,4 @@
-:root {
-  --primary: #7900FF;
-  --business: #32c091;
-  --personal: var(--primary);
-  --light: #E5D1FA;
-  /* --light: linear-gradient(174.2deg, rgba(255, 244, 228, 1) 7.1%, rgba(240, 246, 238, 1) 67.4%); */
-  --grey: #888;
-  --dark: #313154;
-  --danger: #FF5B57;
 
-  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-
-  --business-glow: 0px 0px 4px rgba(136, 241, 124, 0.75);
-  --personal-glow: 0px 0px 4px rgba(103, 61, 243, 0.75);
-}
 
 * {
   margin: 0;
@@ -20,6 +6,8 @@
   box-sizing: border-box;
   font-family: 'monserrat', sans-serif;
 }
+
+
 
 input:not([type="radio"]):not([type="checkbox"]),
 button {
@@ -30,15 +18,116 @@ button {
   cursor: initial;
 }
 
-body {
-  background: var(--light);
+/* Additional CSS for the new functions */
+
+.post-section {
+  margin-top: 2rem;
+}
+
+.post-section h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--dark);
-  background-image: linear-gradient(to right, #F5DD61, #F57D1F);
+  margin-bottom: 1rem;
+}
+
+.post-section select {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--primary);
+  
+  background-color: white;
+  color: var(--dark);
+}
+
+.post-section .post-list {
+  margin-top: 1rem;
+}
+
+.post-section .post-item {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+}
+
+.post-section .post-item h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+.post-section .post-item p {
+  font-size: 1rem;
+  color: var(--black);
+}
+
+.post-section .post-item:last-child {
+  margin-bottom: 0;
+}
+
+/* End of additional CSS for the new functions */
+
+
+
+body {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+        circle farthest-side at 0% 50%,
+        #282828 23.5%,
+        rgba(255, 170, 0, 0) 0
+      )
+      21px 30px,
+    radial-gradient(
+        circle farthest-side at 0% 50%,
+        #2c3539 24%,
+        rgba(240, 166, 17, 0) 0
+      )
+      19px 30px,
+    linear-gradient(
+        #282828 14%,
+        rgba(240, 166, 17, 0) 0,
+        rgba(240, 166, 17, 0) 85%,
+        #282828 0
+      )
+      0 0,
+    linear-gradient(
+        150deg,
+        #282828 24%,
+        #2c3539 0,
+        #2c3539 26%,
+        rgba(240, 166, 17, 0) 0,
+        rgba(240, 166, 17, 0) 74%,
+        #2c3539 0,
+        #2c3539 76%,
+        #282828 0
+      )
+      0 0,
+    linear-gradient(
+        30deg,
+        #282828 24%,
+        #2c3539 0,
+        #2c3539 26%,
+        rgba(240, 166, 17, 0) 0,
+        rgba(240, 166, 17, 0) 74%,
+        #2c3539 0,
+        #2c3539 76%,
+        #282828 0
+      )
+      0 0,
+    linear-gradient(90deg, #2c3539 2%, #282828 0, #282828 98%, #2c3539 0%) 0 0
+      #282828;
+  background-size: 40px 60px;
 }
 
 .app {
-  width: 70%;
   margin: auto;
+  width: 70%;
+  margin-top: 30px;
 }
 
 section {
@@ -48,13 +137,12 @@ section {
   padding-right: 1.5rem;
 }
 
-
-
 h4 {
   color: var(--grey);
   font-size: 0.875rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .greeting .title {
@@ -89,6 +177,7 @@ h4 {
   border-radius: 0.5rem;
   box-shadow: var(--shadow);
   margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .create-todo .options {
@@ -115,50 +204,96 @@ input[type="checkbox"] {
   display: none;
 }
 
+.bubble-wrapper * {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.bubble-wrapper input[type="checkbox"] {
+  display: none;
+}
+
 .bubble {
+  --size: 25px;
+  --shadow: calc(var(--size) * .07) calc(var(--size) * .1);
+  position: relative;
+  width: var(--size);
+  height: var(--size);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
+  background-color: #4158D0;
+  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
   border-radius: 50%;
-  border: 2px solid var(--business);
-  box-shadow: 0 0 10px var(--business);
-  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 var(--shadow) #ffbeb8;
+  cursor: pointer;
+  transition: 0.2s ease transform, 0.2s ease background-color,
+      0.2s ease box-shadow;
+  overflow: hidden;
 }
 
 .bubble:hover {
   transform: scale(1.2);
 }
 
+.bubble:active {
+  transform: scale(0.9);
+}
+
+.bubble::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(var(--size) * 0.7);
+  height: calc(var(--size) * 0.7);
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: inset 0 var(--shadow) #ffbeb8;
+  transition: 0.2s ease width, 0.2s ease height;
+}
+
+.bubble:hover::before {
+  width: calc(var(--size) * 0.55);
+  height: calc(var(--size) * 0.55);
+  box-shadow: inset 0 var(--shadow) #ff9d96;
+}
+
 .bubble.personal {
-  border-color: var(--personal);
-  box-shadow: 0 0 10px var(--personal);
+  background-color: #C850C0;
+  background-image: linear-gradient(43deg, #C850C0 0%, #4158D0 46%, #FFCC70 100%);
+  box-shadow: 0 var(--shadow) #ffbeb8;
 }
 
 .bubble::after {
   content: "";
-  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(var(--size) * 0.1);
+  height: calc(var(--size) * 0.3);
+  background-color: white;
+  border-radius: 2px;
   opacity: 0;
-  width: 0px;
-  height: 0px;
-  background-color: var(--business);
-  box-shadow: 0 0 10px var(--business);
-  border-radius: 50%;
-  transition: 0.2s ease-in-out;
+  transition: 0.2s ease transform, 0.2s ease opacity;
 }
 
 .bubble.personal::after {
-  background-color: var(--personal);
-  box-shadow: 0 0 10px var(--personal);
+  background-color: white;
 }
 
-input:checked~.bubble::after {
-  width: 10px;
-  height: 10px;
+.bubble input[type="checkbox"]:checked~.bubble {
+  background-color: #4158D0;
+  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.bubble input[type="checkbox"]:checked~.bubble::after {
+  transform: translateY(0);
   opacity: 1;
 }
-
 
 .create-todo .options label div {
   color: var(--dark);
