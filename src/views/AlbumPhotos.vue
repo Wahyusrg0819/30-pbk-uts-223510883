@@ -26,6 +26,8 @@ import { useRoute } from 'vue-router';
 const route = useRoute();
 const albumId = route.params.albumId;
 
+const title = ref(' title ');
+
 const photos = ref([]);
 
 const fetchPhotos = async () => {

@@ -59,12 +59,16 @@ const addTodo = () => {
     done: false,
     createdAt: new Date().getTime()
   });
-  input_content.value = '';
+
+  input_content.value = '  ';
 };
 
 const removeTodo = index => {
   todosStore.removeTodo(index);
 };
+
+
+
 </script>
 
   
